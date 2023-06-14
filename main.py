@@ -38,6 +38,7 @@ async def run_script(script:str) -> dict:
 
 async def main():
 	with open('script.py','r') as f: script = f.read().split('# ---------------------------------------------------------------------')[1]
+	if len(output) > 4000: print(f'WARNING: script is {len(output)} characters long, which is over the 4000 character limit')
 	output = await run_script(script)
 	response = output.get('response','')
 	response = '' if response is None else response
