@@ -40,6 +40,7 @@ async def main():
 	with open('script.py','r') as f: script = f.read().split('# ---------------------------------------------------------------------')[1]
 	output = await run_script(script)
 	response = output.get('response','')
+	response = '' if response is None else response
 	if len(response) > 512: print(f'WARNING: response is {len(response)} characters long, which is over the 512 character limit')
 	print(f'discord message response:\n{response}' if response else 'no response')
 
