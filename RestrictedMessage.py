@@ -21,4 +21,5 @@ class RestrictedMessage:
 		self.channel = self._channel()
 		self.guild = self._guild()
 		self.author = self._user()
+		self.timestamp:float = 1620198608
 		self.content:str = 'wow, this is an example message, you can change it in RestrictedMessage.py!'
