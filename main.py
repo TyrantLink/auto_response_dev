@@ -1,6 +1,6 @@
 from RestrictedPython.Guards import safe_builtins,full_write_guard,guarded_iter_unpack_sequence
+from RestrictedPython.Eval import default_guarded_getiter,default_guarded_getitem
 from asyncio import run,wait_for,TimeoutError,get_running_loop
-from RestrictedPython.Eval import default_guarded_getiter
 from RestrictedPython import compile_restricted_exec
 from concurrent.futures import ThreadPoolExecutor
 from RestrictedMessage import RestrictedMessage
@@ -28,6 +28,7 @@ safe_builtins.update({
 	'__metaclass__': type,
 	'__name__': __name__,
 	'_getiter_': default_guarded_getiter,
+	'_getitem_': default_guarded_getitem,
 	'_iter_unpack_sequence_': guarded_iter_unpack_sequence,
 	'_write_': full_write_guard,
 	'__import__': attempted_import,
