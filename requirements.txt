@@ -1,1 +1,6 @@
-RestrictedPython==6.0
+mypy==1.11.0
+mypy-extensions==1.0.0
+regex==2024.5.15
+setuptools==71.1.0
+types-regex==2024.5.15.20240519
+typing-extensions==4.12.2

@@ -1,2 +1,8 @@
-venv
+.mypy_cache
 __pycache__
+*.cpython*
+build
+/messages.py
+test.py
+.?venv
+/auto_response.py
