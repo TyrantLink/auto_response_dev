@@ -1,4 +1,4 @@
-Repository hosting all scripted auto responses for [/reg/nal]/](https://github.com/tyrantlink/regnal)
+Repository hosting all scripted auto responses for [/reg/nal](https://github.com/tyrantlink/regnal)
 
 ## About
 All scripted auto responses are stored in this repository. This repository is used to test the auto responses against a set of messages.
