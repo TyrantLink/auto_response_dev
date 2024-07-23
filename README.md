@@ -6,11 +6,12 @@ This repo compiles all auto responses with mypyc to increase speed and ensure ty
 
 ## Adding scripted auto responses to your server
 1. invite [/reg/nal](https://discord.com/oauth2/authorize?client_id=839398546217893898&permissions=309506436225&scope=bot%20applications.commands) to your server
-2. run /config
-3. navigate to guild > auto_responses
-4. click on the `scripted auto responses` button
-5. click on `import by name` and type the name of file in [auto_responses](auto_responses) you want to import (without the .py extension)
-6. that's it! the auto response should now be active in your server
+2. browse the [auto responses](auto_responses/README.md) to find one you want to add
+3. run /config
+4. navigate to guild > auto_responses
+5. click on the `scripted auto responses` button
+6. click on `import by name` and type the name of file in [auto_responses](auto_responses) you want to import (without the .py extension)
+7. that's it! the auto response should now be active in your server
 
 ## Requirements
 - Python 3.11.x
@@ -28,7 +29,8 @@ This repo compiles all auto responses with mypyc to increase speed and ensure ty
 9. configure the test messages in `messages.py` as needed
 10. test by running `python main.py`
 11. if the test passes, compile the auto response with `mypyc ./auto_responses`
-12. commit the changes to the repository and submit a pull request to the main repository
+12. edit the [README](auto_responses/README.md) in the `auto_responses` directory to include a description of the auto response and the author(s) of the auto response
+13. commit the changes to the repository and submit a pull request to the main repository
 
 ## Quick Notes
 - i am pretty restrictive on what I accept as auto responses. But I'll allow almost anything as long as it's not harmful.
