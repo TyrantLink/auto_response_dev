@@ -14,6 +14,16 @@ class User:
     nickname: str
     """User's nickname in the guild."""
 
+    @property
+    def display_name(self) -> str:
+        """User's display name."""
+        return self.nickname or self.name
+
+    @property
+    def mention(self) -> str:
+        """User's mention string"""
+        return f'<@{self.id}>'
+
 
 @dataclass
 class Channel:
@@ -23,6 +33,11 @@ class Channel:
     """Channel's discord id."""
     nsfw: bool
     """Whether the channel is nsfw."""
+
+    @property
+    def mention(self) -> str:
+        """Channel's mention string"""
+        return f'<#{self.id}>'
 
 
 @dataclass
