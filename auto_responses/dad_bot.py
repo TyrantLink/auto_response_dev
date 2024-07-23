@@ -5,7 +5,7 @@ from random import choices
 
 
 def rand_name(message: Message, splitter: str) -> str:
-    options = [message.guild.me.nickname]
+    options = [message.guild.me.display_name]
     weights: list[float] = []
 
     if splitter in ["i'm"]:
