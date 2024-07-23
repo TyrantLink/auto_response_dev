@@ -1,5 +1,5 @@
 # created by tyrantlink
-from models import Message
+from .lib.models import Message
 from datetime import datetime
 
 

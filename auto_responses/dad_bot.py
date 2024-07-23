@@ -1,6 +1,6 @@
 # created by tyrantlink
-from regex import sub, split, finditer, search, fullmatch, IGNORECASE
-from models import Message
+from regex import sub, split, finditer, IGNORECASE
+from .lib.models import Message
 from random import choices
 
 

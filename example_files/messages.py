@@ -1,4 +1,4 @@
-from models import Message, Channel, Guild, User
+from auto_responses.lib.models import Message, Channel, Guild, User
 from datetime import datetime
 
 
@@ -18,7 +18,6 @@ COMPLEX_TEST_MESSAGES = [
         author=User(
             name='unset',
             id=0,
-            bot=False,
             created_at=datetime.now(),
             nickname='unset'
         ),
@@ -33,7 +32,6 @@ COMPLEX_TEST_MESSAGES = [
             me=User(
                 name='/reg/nal',
                 id=1,
-                bot=True,
                 created_at=datetime.now(),
                 nickname='/reg/nal'
             )
@@ -51,7 +49,6 @@ else:
             author=User(
                 name='unset',
                 id=0,
-                bot=False,
                 created_at=datetime.now(),
                 nickname='unset'
             ),
@@ -66,7 +63,6 @@ else:
                 me=User(
                     name='/reg/nal',
                     id=1,
-                    bot=True,
                     created_at=datetime.now(),
                     nickname='/reg/nal'
                 )

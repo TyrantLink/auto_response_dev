@@ -9,8 +9,6 @@ class User:
     """User's global name."""
     id: int
     """User's discord id."""
-    bot: bool
-    """Whether the user is a bot."""
     created_at: datetime
     """When the user was created."""
     nickname: str

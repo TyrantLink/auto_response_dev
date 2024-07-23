@@ -1,5 +1,5 @@
 # created by YOUR_GITHUB_USERNAME
-from models import Message
+from .lib.models import Message
 import time
 
 

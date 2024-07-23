@@ -1,4 +1,4 @@
-from models import AutoResponse, AutoResponseMethod, AutoResponseType, AutoResponseData, AutoResponseFollowup
+from auto_responses.lib.models import AutoResponse, AutoResponseMethod, AutoResponseType, AutoResponseData, AutoResponseFollowup
 
 #! if you want your auto response to execute a script,
 #! `response` MUST be the name of the script file (without the .py extension)

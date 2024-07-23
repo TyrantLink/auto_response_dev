@@ -1,31 +1,27 @@
-from models import AutoResponse, Message, Channel, Guild, User, AutoResponseMethod, AutoResponseType
+from auto_responses.lib.models import Message, AutoResponseMethod, AutoResponseType
 from regex import search, fullmatch, escape, IGNORECASE
 from auto_response import AUTO_RESPONSE as AU
 from importlib import import_module
-from datetime import datetime
 from time import perf_counter
 from typing import Callable
 
 
 def test(message: Message) -> str:
-    if message.author.bot:
-        return 'Auto responses do not respond to bots'
-
     if message.content == '':
         return 'Auto responses do not respond to empty messages'
+
+    trigger = AU.trigger if AU.data.regex else escape(AU.trigger)
 
     match AU.method:
         case AutoResponseMethod.exact:
             match = fullmatch(
-                pattern=(AU.trigger if AU.data.regex else escape(
-                    AU.trigger))+r'(\.|\?|\!)*',
+                pattern=trigger+r'(\.|\?|\!)*',
                 string=message.content,
                 flags=0 if AU.data.case_sensitive else IGNORECASE
             )
         case AutoResponseMethod.contains:
             match = search(
-                pattern=rf'(^|\s){AU.trigger if AU.data.regex else escape(
-                    AU.trigger)}(\.|\?|\!)*(\s|$)',
+                pattern=rf'(^|\s){trigger}(\.|\?|\!)*(\s|$)',
                 string=message.content,
                 flags=0 if AU.data.case_sensitive else IGNORECASE
             )
@@ -83,7 +79,7 @@ def test(message: Message) -> str:
             if response is None:
                 return 'No response from script'
 
-            return f'Successful script response\n{response}'
+            return f'Successful script response (execution time: {(et-st)*1000:.2f}ms)\n{response}'
         case AutoResponseType.deleted:
             return 'Auto response has been deleted'
         case _:
