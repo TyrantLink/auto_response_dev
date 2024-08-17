@@ -17,7 +17,7 @@ if not exists('secrets.toml'):
             '''
             # fill in or create needed secrets
             # note: if creating secrets, be sure to add them to aulib.secrets.py and
-            '''.replace('    ', '')
+            '''.replace('    ', '').strip()
         )
 
 
