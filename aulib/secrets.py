@@ -4,6 +4,8 @@ from os.path import exists
 
 # ? update this dataclass to match the secrets you need, always set a default value of None
 
+_SECRETS_PATH = 'au_scripts/secrets.toml' if __name__ == 'au_scripts.aulib.secrets' else 'secrets.toml'
+
 
 @dataclass
 class Secrets:
@@ -11,8 +13,8 @@ class Secrets:
     gitlab_token: str | None = None
 
 
-if not exists('secrets.toml'):
-    with open('secrets.toml', 'w') as f:
+if not exists(_SECRETS_PATH):
+    with open(_SECRETS_PATH, 'w') as f:
         f.write(
             '''
             # fill in or create needed secrets
@@ -21,5 +23,5 @@ if not exists('secrets.toml'):
         )
 
 
-with open('secrets.toml') as f:
+with open(_SECRETS_PATH, 'r') as f:
     SECRETS = Secrets(**loads(f.read()))
