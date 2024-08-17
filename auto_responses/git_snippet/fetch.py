@@ -17,7 +17,7 @@ def get(url: str, **kwargs) -> str:
     return response.text
 
 
-def fetch_github_snippet(repo: str, path: str, start_line: str, end_line: str) -> Embed | None:
+def fetch_github_snippet(repo: str, path: str, start_line: str, end_line: str) -> str | None:
     headers = {'Accept': 'application/vnd.github.v3.raw'}
     if SECRETS.github_token is not None:
         headers['Authorization'] = f'token {SECRETS.github_token}'
@@ -55,7 +55,7 @@ def fetch_github_snippet(repo: str, path: str, start_line: str, end_line: str) -
     if file_contents is None or len(file_contents) > 4000:
         return None
 
-    return to_embed(
+    return to_text(
         file_contents,
         file_path,
         start_line,
@@ -150,7 +150,7 @@ def fetch_github_snippet(repo: str, path: str, start_line: str, end_line: str) -
 #     return snippet_to_embed(file_contents, file_path, start_line, end_line)
 
 
-def to_embed(
+def to_text(
     file_contents: str,
     file_path: str,
     start: str,
@@ -158,7 +158,7 @@ def to_embed(
     url: str,
     repo: str,
     repo_url: str
-) -> Embed | None:
+) -> str | None:
     """Given file contents, file path, start line and end line creates a code block"""
 
     split_file_contents = file_contents.splitlines()
@@ -186,20 +186,12 @@ def to_embed(
         language = ''
 
     ret = (
-        f'`{file_path}` line {start_line}\n'
+        f'`{file_path}` line {start_line}'
         if start_line == end_line
-        else f'`{file_path}` lines {start_line} to {end_line}\n'
+        else f'`{file_path}` lines {start_line} to {end_line}'
     )
 
     if not len(required):
         return None
 
-    return Embed(
-        title=ret,
-        description=f'```{language}\n{required}```',
-        url=url,
-        author=EmbedAuthor(
-            name=repo,
-            url=repo_url
-        )
-    )
+    return f'[`{repo}`](<{repo_url}>)\n[{ret}](<{url}>)\n```{language}\n{required}```'

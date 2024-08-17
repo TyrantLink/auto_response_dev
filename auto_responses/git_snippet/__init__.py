@@ -47,10 +47,18 @@ pattern_handlers = {
 
 
 def on_message(message: Message) -> Response | None:
-    embeds = [
-        embed
-        for pattern, handler in pattern_handlers.items()
-        for match in pattern.finditer(message.content)
-        if (embed := handler(**match.groupdict())) is not None
-    ]
-    return Response(embeds=embeds) if embeds else None
+    response = '\n'.join(
+        [
+            content
+            for pattern, handler in pattern_handlers.items()
+            for match in pattern.finditer(message.content)
+            if (content := handler(**match.groupdict())) is not None
+        ]
+    )
+    if not response:
+        return None
+
+    if len(response) > 2000:
+        return Response(content=f'snippet too long ({len(response)}/2000)')
+
+    return Response(content=response)
