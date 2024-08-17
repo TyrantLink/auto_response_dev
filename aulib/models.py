@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from .embed import Embed
 from datetime import datetime
 from enum import Enum
 
@@ -120,6 +121,10 @@ class AutoResponseData:
     delete_trigger: bool
     """Whether to delete the trigger message.
     NOTE: this can ONLY be set as a guild auto response override."""
+    reply: bool
+    """Whether to reply to the message that triggered the auto response."""
+    suppress_trigger_embeds: bool
+    """Whether to suppress the trigger message's embeds."""
     user: int | None
     """if True, only this user can trigger the auto response."""
     guild: int | None
@@ -133,8 +138,23 @@ class AutoResponseData:
 @dataclass
 class AutoResponse:
     id: str
+    """MUST be unset, au is given an id when it is added to the database"""
     method: AutoResponseMethod
     trigger: str
     response: str
+    """MUST be the name of the script folder"""
     type: AutoResponseType
+    """MUST be AutoResponseType.script"""
     data: AutoResponseData
+
+
+@dataclass
+class Response:
+    content: str | None = None
+    """response message content\n\nMUTUALLY EXCLUSIVE WITH file and embeds"""
+    embeds: list[Embed] | None = None
+    """list of embeds (up to 10)\n\nMUTUALLY EXCLUSIVE WITH content and file"""
+    file: str | None = None
+    """file name hosted on api.regn.al\n\nMUTUALLY EXCLUSIVE WITH content and embeds"""
+    followups: list[AutoResponseFollowup] | None = None
+    """list of followups to send after the initial response. Max 10 followups.\n\nMUTUALLY EXCLUSIVE WITH embeds and file"""

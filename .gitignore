@@ -4,5 +4,9 @@ __pycache__
 build
 /messages.py
 test.py
-.?venv
+.venv
+venv
 /auto_response.py
+secrets.toml
+.stignore
+.stfolder

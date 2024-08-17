@@ -1,5 +1,12 @@
 from importlib import import_module
 from typing import Callable
+from .aulib import (
+    Response,
+    Message,
+    Channel,
+    Guild,
+    User
+)
 
 
 class ScriptedAutoResponseManager:
@@ -10,7 +17,9 @@ class ScriptedAutoResponseManager:
         if script in self.cache:
             return self.cache[script]
 
-        self.cache[script] = import_module(f'{__name__}.{script}').on_message
+        self.cache[script] = import_module(
+            f'{__name__}.auto_responses.{script}'
+        ).on_message
         return self.cache[script]
 
 

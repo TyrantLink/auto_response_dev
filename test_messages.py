@@ -1,4 +1,4 @@
-from auto_responses.lib.models import Message, Channel, Guild, User
+from aulib.models import Message, Channel, Guild, User
 from datetime import datetime
 
 
@@ -6,12 +6,11 @@ from datetime import datetime
 TEST_COMPLEX = False
 
 
-# ? test with just the message content
 SIMPLE_TEST_MESSAGES = [
     'unset test message'
 ]
 
-# ? or uncomment to test with full context
+
 COMPLEX_TEST_MESSAGES = [
     Message(
         id=0,

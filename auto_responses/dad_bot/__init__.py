@@ -1,6 +1,6 @@
 # created by tyrantlink
 from regex import sub, split, finditer, IGNORECASE
-from .lib.models import Message
+from ...aulib import Message, Response
 from random import choices
 
 
@@ -19,7 +19,7 @@ def rand_name(message: Message, splitter: str) -> str:
     return choices(options, weights)[0]
 
 
-def on_message(message: Message) -> str | None:
+def on_message(message: Message) -> Response | None:
     response, splitter = '', ''
     input = sub(r'<(@!|@|@&)\d{10,25}>|@everyone|@here|(https?:\/\/[^\s]+.)', '[REDACTED]', sub(
         r'\*|\_|\~|\`|\|', '', message.content))
@@ -50,4 +50,4 @@ def on_message(message: Message) -> str | None:
     if len(response) > 2000:
         return None
 
-    return response
+    return Response(content=response)
