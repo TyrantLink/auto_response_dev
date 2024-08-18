@@ -1,6 +1,5 @@
-# created by tyrantlink
 # mildly based on https://github.com/dolphingarlic/git-the-lines
-from ...aulib import Message, Response
+from ...aulib import ScriptAuthor, Message, Response
 from re import compile
 from .fetch import (
     fetch_github_snippet,
@@ -8,6 +7,11 @@ from .fetch import (
     # fetch_gitlab_snippet,
     # fetch_bitbucket_snippet,
     # fetch_heptapod_snippet
+)
+
+author = ScriptAuthor(
+    name='tyrantlink',
+    id=250797109022818305
 )
 
 

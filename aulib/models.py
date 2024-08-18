@@ -149,6 +149,14 @@ class AutoResponse:
 
 
 @dataclass
+class ScriptAuthor:
+    name: str
+    """author's name."""
+    id: int
+    """author's discord id."""
+
+
+@dataclass
 class Response:
     content: str | None = None
     """response message content\n\nMUTUALLY EXCLUSIVE WITH file and embeds"""

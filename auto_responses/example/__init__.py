@@ -1,6 +1,10 @@
-# created by YOUR_GITHUB_USERNAME
-from ...aulib import Message, Response
+from ...aulib import ScriptAuthor, Message, Response
 import time
+
+author = ScriptAuthor(
+    name='your_discord_username',
+    id=0
+)
 
 
 def on_message(message: Message) -> Response | None:

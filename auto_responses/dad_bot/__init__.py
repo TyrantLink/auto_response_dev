@@ -1,7 +1,11 @@
-# created by tyrantlink
 from regex import sub, split, finditer, IGNORECASE
-from ...aulib import Message, Response
+from ...aulib import ScriptAuthor, Message, Response
 from random import choices
+
+author = ScriptAuthor(
+    name='tyrantlink',
+    id=250797109022818305
+)
 
 
 def rand_name(message: Message, splitter: str) -> str:

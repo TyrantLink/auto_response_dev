@@ -1,6 +1,10 @@
-# created by tyrantlink
-from ...aulib import Message, Response
+from ...aulib import ScriptAuthor, Message, Response
 from datetime import datetime
+
+author = ScriptAuthor(
+    name='tyrantlink',
+    id=250797109022818305
+)
 
 
 def on_message(message: Message) -> Response | None:
