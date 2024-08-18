@@ -7,132 +7,144 @@ from enum import Enum
 @dataclass
 class User:
     name: str
-    """User's global name."""
+    """user's global name."""
     id: int
-    """User's discord id."""
+    """user's discord id."""
     created_at: datetime
-    """When the user was created."""
+    """when the user was created."""
     nickname: str
-    """User's nickname in the guild."""
+    """user's nickname in the guild."""
 
     @property
     def display_name(self) -> str:
-        """User's display name."""
+        """user's display name."""
         return self.nickname or self.name
 
     @property
     def mention(self) -> str:
-        """User's mention string"""
+        """user's mention string"""
         return f'<@{self.id}>'
 
 
 @dataclass
 class Channel:
     name: str
-    """Channel's name."""
+    """channel's name."""
     id: int
-    """Channel's discord id."""
+    """channel's discord id."""
     nsfw: bool
-    """Whether the channel is nsfw."""
+    """whether the channel is nsfw."""
 
     @property
     def mention(self) -> str:
-        """Channel's mention string"""
+        """channel's mention string"""
         return f'<#{self.id}>'
 
 
 @dataclass
 class Guild:
     name: str
-    """Guild's name."""
+    """guild's name."""
     id: int
-    """Guild's discord id."""
+    """guild's discord id."""
     me: User
-    """Bot's user object in the guild."""
+    """bot's user object in the guild."""
+
+
+@dataclass
+class Attachment:
+    filename: str
+    """attachment filename."""
+    url: str
+    """attachment url."""
+    proxy_url: str
+    """attachment proxy url."""
 
 
 @dataclass
 class Message:
     id: int
-    """Message discord id."""
+    """message discord id."""
     author: User
-    """Message author."""
+    """message author."""
     channel: Channel
-    """Message channel."""
+    """message channel."""
     guild: Guild
-    """Message guild."""
+    """message guild."""
     content: str
-    """Message content."""
+    """message content."""
+    attachments: list[Attachment]
+    """list of attachments."""
 
 
 @dataclass
 class AutoResponseFollowup:
     delay: float
-    """Delay in seconds before sending followup."""
+    """delay in seconds before sending followup."""
     response: str
-    """Followup response."""
+    """followup response."""
 
 
 class AutoResponseMethod(Enum):
     exact = 0
-    """Requires exact match of trigger."""
+    """requires exact match of trigger."""
     contains = 1
-    """Requires trigger to be contained in message."""
+    """requires trigger to be contained in message."""
     regex = 2
-    """Requires trigger to match regex pattern.
-    NOTE: This method is different from AutoResponseData.regex
-    This method does NOT use the standard word boundary regex"""
+    """requires trigger to match regex pattern.\n
+    NOTE: this method is different from AutoResponseData.regex
+    this method does NOT use the standard word boundary regex"""
     mention = 3
-    """Trigger must be a numerical user id, only responds when user is mentioned."""
+    """trigger must be a numerical user id, only responds when user is mentioned."""
     disabled = 4
-    """Disables the autoresponse."""
+    """disables the autoresponse."""
 
 
 class AutoResponseType(Enum):
     text = 0
-    """Response is text."""
+    """response is text."""
     file = 1
-    """Response is a file hosted on api.regn.al."""
+    """response is a file hosted on api.regn.al."""
     script = 2
-    """Response is a script to be executed."""
+    """response is a script to be executed."""
     deleted = 3
-    """Auto Response no longer exists."""
+    """auto response no longer exists."""
 
 
 @dataclass
 class AutoResponseData:
     weight: int
-    """Weight when randomly selecting a response. (only used when multiple auto responses are triggered)
-    Most base auto responses have a weight of 1000"""
+    """weight when randomly selecting a response. (only used when multiple auto responses are triggered)\n
+    most base auto responses have a weight of 1000"""
     chance: float
-    """Chance of the auto response being triggered. (0.0 - 100.0)"""
+    """chance of the auto response being triggered. (0.0 - 100.0)"""
     ignore_cooldown: bool
-    """Whether to ignore the auto response cooldown.
+    """whether to ignore the auto response cooldown.
     NOTE: this can ONLY be set as a guild auto response override."""
     custom: bool
-    """Whether the auto response is a custom auto response."""
+    """whether the auto response is a custom auto response."""
     regex: bool
-    """Whether the trigger is a regex pattern."""
+    """whether the trigger is a regex pattern."""
     nsfw: bool
-    """Whether the auto response is nsfw.
+    """whether the auto response is nsfw.
     if True, the auto response will only trigger in nsfw channels."""
     case_sensitive: bool
-    """Whether the trigger is case sensitive."""
+    """whether the trigger is case sensitive."""
     delete_trigger: bool
-    """Whether to delete the trigger message.
+    """whether to delete the trigger message.
     NOTE: this can ONLY be set as a guild auto response override."""
     reply: bool
-    """Whether to reply to the message that triggered the auto response."""
+    """whether to reply to the message that triggered the auto response."""
     suppress_trigger_embeds: bool
-    """Whether to suppress the trigger message's embeds."""
+    """whether to suppress the trigger message's embeds."""
     user: int | None
     """if True, only this user can trigger the auto response."""
     guild: int | None
     """if True, this auto response can only be triggered in this guild."""
     source: str | None
-    """Source of the auto response."""
+    """source of the auto response."""
     followups: list[AutoResponseFollowup]
-    """List of followups to send after the initial response. Max 10 followups."""
+    """list of followups to send after the initial response. max 10 followups."""
 
 
 @dataclass

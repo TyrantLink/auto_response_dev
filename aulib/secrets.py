@@ -10,7 +10,9 @@ _SECRETS_PATH = 'au_scripts/secrets.toml' if __name__ == 'au_scripts.aulib.secre
 @dataclass
 class Secrets:
     github_token: str | None = None
+    """used by git_snippet"""
     gitlab_token: str | None = None
+    """used by git_snippet"""
 
 
 if not exists(_SECRETS_PATH):

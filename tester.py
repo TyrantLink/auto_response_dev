@@ -93,6 +93,9 @@ def test_au(message: Message, au: AutoResponse) -> str:
                 success_message += f'\nresponse text: {response.content}'
 
             if response.embeds:
+                for embed in response.embeds:
+                    embed.validate()
+
                 embeds = '\n'.join((str(embed) for embed in response.embeds))
                 success_message += f'response embeds:\n{embeds}'
 

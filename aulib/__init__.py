@@ -19,6 +19,7 @@ from .models import (
     Channel,
     Message,
     Response,
+    Attachment,
     ScriptAuthor,
     AutoResponse,
     AutoResponseData,

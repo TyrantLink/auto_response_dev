@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Callable
 from .aulib import (
     ScriptAuthor,
+    Attachment,
     Response,
     Message,
     Channel,

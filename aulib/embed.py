@@ -137,20 +137,24 @@ class Embed:
 
         for field in self.fields:
             total_chars += len(field.name) + len(field.value)
+
             if len(field.name) > 256:
                 raise ValueError('field name must be less than 256 characters')
+
             if len(field.value) > 1024:
                 raise ValueError(
                     'field value must be less than 1024 characters')
 
         if self.footer:
             total_chars += len(self.footer.text)
+
             if len(self.footer.text) > 2048:
                 raise ValueError(
                     'footer text must be less than 2048 characters')
 
         if self.author:
             total_chars += len(self.author.name)
+
             if len(self.author.name) > 256:
                 raise ValueError(
                     'author name must be less than 256 characters')
