@@ -1,4 +1,4 @@
-from ...aulib import (
+from aulib import (
     AutoResponse,
     AutoResponseType,
     AutoResponseData,

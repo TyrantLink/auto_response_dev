@@ -1,5 +1,5 @@
 from regex import sub, split, finditer, IGNORECASE
-from ...aulib import ScriptAuthor, Message, Response
+from aulib import ScriptAuthor, Message, Response
 from random import choices
 
 author = ScriptAuthor(

@@ -1,5 +1,5 @@
 # mildly based on https://github.com/dolphingarlic/git-the-lines
-from ...aulib import ScriptAuthor, Message, Response
+from aulib import ScriptAuthor, Message, Response
 from re import compile
 from .fetch import (
     fetch_github_snippet,

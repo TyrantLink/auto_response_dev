@@ -1,4 +1,4 @@
-from ...aulib import ScriptAuthor, Message, Response
+from aulib import ScriptAuthor, Message, Response
 import time
 
 author = ScriptAuthor(
