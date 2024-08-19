@@ -35,7 +35,8 @@ COMPLEX_TEST_MESSAGES = [
                 nickname='/reg/nal'
             )
         ),
-        content='unset'
+        content='unset',
+        attachments=[]
     )
 ]
 
@@ -66,7 +67,8 @@ else:
                     nickname='/reg/nal'
                 )
             ),
-            content=content
+            content=content,
+            attachments=[]
         )
         for content in SIMPLE_TEST_MESSAGES
     ]
