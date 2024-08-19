@@ -1,6 +1,6 @@
-from ...aulib import Embed, EmbedAuthor, SECRETS
 from pydantic.main import BaseModel
 from requests import get as _get
+from aulib import SECRETS
 from textwrap import dedent
 from json import loads
 
@@ -52,7 +52,7 @@ def fetch_github_snippet(repo: str, path: str, start_line: str, end_line: str) -
         headers=headers
     )
 
-    if file_contents is None or len(file_contents) > 4000:
+    if file_contents is None:
         return None
 
     return to_text(
