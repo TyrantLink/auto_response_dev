@@ -9,6 +9,7 @@ pydantic==2.8.2
 pydantic-core==2.20.1
 regex==2024.5.15
 requests==2.32.3
+restrictedpython==7.2
 setuptools==65.5.0
 types-regex==2024.5.15.20240519
 types-requests==2.32.0.20240712

@@ -9,7 +9,7 @@ from aulib import (
 AUTO_RESPONSE = AutoResponse(
     id='unset',  # ? MUST be unset, au is given an id when it is added to the database
     method=AutoResponseMethod.exact,
-    trigger='```py(thon)?\n#!/reg/nal\n.*\n```',
+    trigger='```py(thon)?\n#!/reg/nal(-unsafe)?\n.*\n```',
     response='python',  # ? MUST be the name of the script folder
     type=AutoResponseType.script,  # ? MUST be AutoResponseType.script
     data=AutoResponseData(
