@@ -22,6 +22,7 @@ from .models import (
     Attachment,
     ScriptAuthor,
     AutoResponse,
+    MessageReference,
     AutoResponseData,
     AutoResponseType,
     AutoResponseMethod,

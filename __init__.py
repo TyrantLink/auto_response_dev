@@ -2,6 +2,7 @@ from importlib import import_module
 from dataclasses import dataclass
 from typing import Callable
 from .aulib import (
+    MessageReference,
     ScriptAuthor,
     Attachment,
     Response,

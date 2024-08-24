@@ -62,6 +62,15 @@ class Attachment:
 
 
 @dataclass
+class MessageReference:
+    id: int
+    """referenced message discord id."""
+    author: User
+    """referenced message author."""
+    content: str
+
+
+@dataclass
 class Message:
     id: int
     """message discord id."""
@@ -73,6 +82,8 @@ class Message:
     """message guild."""
     content: str
     """message content."""
+    reference: MessageReference | None
+    """referenced message (reply)."""
     attachments: list[Attachment]
     """list of attachments."""
 
