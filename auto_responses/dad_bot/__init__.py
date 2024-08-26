@@ -33,19 +33,15 @@ def on_message(message: Message) -> Response | None:
         if (
             s is None or
             (s.span()[0] != 0 and input[s.span()[0]-1] != ' ') or
-                (s.span()[1] < len(input) and input[s.span()[1]] != ' ')):
+            (s.span()[1] < len(input) and input[s.span()[1]] != ' ')
+        ):
             continue
-        response = ''.join(
-            split(
-                pattern=s.captures()[0],
-                string=input,
-                maxsplit=1,
-                flags=IGNORECASE
-            )[1:])
-        splitter = s.captures()[0].lower()
+        response = input[s.span()[1]:]
+        splitter = input[s.span()[0]:s.span()[1]].lower()
 
     if response == '':
         return None
+
     name = rand_name(message, splitter)
 
     nl = '\n'  # ? python stupid
